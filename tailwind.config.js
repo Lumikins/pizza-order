@@ -24,8 +24,8 @@ module.exports = {
         robotoCondensed: [`var(--font-robotoCondensed)`, "sans-serif"],
       },
       colors: {
-        primary: "#d1411e",
-        secondary: "#ffa323",
+        primary: "#D1411E",
+        secondary: "#FFA323",
         tertiary: "#331812",
         black: "#231714",
         orange: "#FF7A30",
