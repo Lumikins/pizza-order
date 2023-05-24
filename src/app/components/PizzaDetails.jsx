@@ -91,11 +91,18 @@ const PizzaDetails = ({ pizza }) => {
             {/* crust selection */}
             <CrustSelection crust={crust} setCrust={setCrust} />
             {/* toppings */}
-            <div>Choose toppings</div>
+            <div className="mb-4 text-xl font-semibold">Choose toppings</div>
             {/* toppings list */}
-            <div>
+            <div className="flex flex-1 flex-wrap gap-2 py-1 justify-center lg:justify-start">
               {pizza.toppings?.map((topping, index) => {
-                return <Topping key={index} />;
+                return (
+                  <Topping
+                    topping={topping}
+                    additionalTopping={additionalTopping}
+                    setAdditionalTopping={setAdditionalTopping}
+                    key={index}
+                  />
+                );
               })}
             </div>
           </div>
