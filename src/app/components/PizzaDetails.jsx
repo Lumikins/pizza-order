@@ -66,7 +66,7 @@ const PizzaDetails = ({ pizza }) => {
         </div>
       </div>
       {/* details */}
-      <div className="bg-pink-200 flex flex-col flex-1">
+      <div className="flex flex-col flex-1">
         <div className="flex-1 p-2 text-center lg:text-left">
           <div className="flex-1 bg-white overflow-y-scroll h-[46vh] scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-white pr-2">
             {/* name */}
@@ -87,7 +87,7 @@ const PizzaDetails = ({ pizza }) => {
               </div>
             </div>
             {/* size selection */}
-            <SizeSelection />
+            <SizeSelection pizza={pizza} size={size} setSize={setSize} />
             {/* crust selection */}
             <CrustSelection />
             {/* toppings */}
@@ -103,7 +103,7 @@ const PizzaDetails = ({ pizza }) => {
         {/* add to cart button */}
         <div className="flex h-full items-center px-2 lg:items-end lg:mb-2">
           <button className="btn btn-lg gradient w-full flex justify-center gap-x-2">
-            <div>Add to cart</div>
+            <div>Add to cart for {price}€</div>
           </button>
         </div>
       </div>
