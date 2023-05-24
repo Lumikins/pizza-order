@@ -73,7 +73,7 @@ const PizzaDetails = ({ pizza }) => {
             <div className="font-semibold">
               <h2 className="capitalize text-3xl mb-1">{pizza.name}</h2>
               {/* size and crust */}
-              <div className="bg-yellow-200 mb-6 text-lg">
+              <div className="mb-6 text-lg">
                 <span>
                   {size === "small"
                     ? "25cm"
@@ -89,7 +89,7 @@ const PizzaDetails = ({ pizza }) => {
             {/* size selection */}
             <SizeSelection pizza={pizza} size={size} setSize={setSize} />
             {/* crust selection */}
-            <CrustSelection />
+            <CrustSelection crust={crust} setCrust={setCrust} />
             {/* toppings */}
             <div>Choose toppings</div>
             {/* toppings list */}
