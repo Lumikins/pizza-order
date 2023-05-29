@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdCheckmark } from "react-icons/io";
 
 const Topping = ({ topping, additionalTopping, setAdditionalTopping }) => {
