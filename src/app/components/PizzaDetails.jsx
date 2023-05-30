@@ -7,7 +7,7 @@ import CrustSelection from "./CrustSelection";
 import SizeSelection from "./SizeSelection";
 import Topping from "./Topping";
 
-const PizzaDetails = ({ pizza }) => {
+const PizzaDetails = ({ pizza, setModal }) => {
   // pizza size state
   const [size, setSize] = useState("small");
 
@@ -115,7 +115,7 @@ const PizzaDetails = ({ pizza }) => {
         {/* add to cart button */}
         <div className="flex h-full items-center px-2 lg:items-end lg:mb-2">
           <button
-            onClick={() =>
+            onClick={() => {
               addToCart(
                 pizza.id,
                 pizza.image,
@@ -124,8 +124,9 @@ const PizzaDetails = ({ pizza }) => {
                 additionalTopping,
                 size,
                 crust
-              )
-            }
+              ),
+                setModal(false);
+            }}
             className="btn btn-lg gradient w-full flex justify-center gap-x-2"
           >
             <div>Add to cart for {price}€</div>

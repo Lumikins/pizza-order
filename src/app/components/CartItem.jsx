@@ -1,10 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import { useContext } from "react";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { IoCloseOutline } from "react-icons/io5";
+import { CartContext } from "../context/CartContext";
 
 const CartItem = ({ pizza }) => {
+  const { removeItem, increaseAmount, decreaseAmount } =
+    useContext(CartContext);
   return (
     <div className="select-non">
       <div className="flex gap-x-4 mb-2">
@@ -28,15 +32,25 @@ const CartItem = ({ pizza }) => {
             {/* quantity controls */}
             <div className="flex items-center gap-x-1">
               {/* remove quantity */}
-              <div className="w-[18px] h-[18px] flex items-center justify-center cursor-pointer text-white gradient rounded-full">
+              <div
+                onClick={() => {
+                  decreaseAmount(pizza.id, pizza.price);
+                }}
+                className="w-[18px] h-[18px] flex items-center justify-center cursor-pointer text-white gradient rounded-full"
+              >
                 <BiMinus />
               </div>
               {/* pizza amount */}
               <div className="flex font-semibold flex-1 max-w-[30px] justify-center items-center text-sm">
-                1
+                {pizza.amount}
               </div>
               {/* add quantity */}
-              <div className="w-[18px] h-[18px] flex items-center justify-center cursor-pointer text-white gradient rounded-full">
+              <div
+                onClick={() => {
+                  increaseAmount(pizza.id, pizza.price);
+                }}
+                className="w-[18px] h-[18px] flex items-center justify-center cursor-pointer text-white gradient rounded-full"
+              >
                 <BiPlus />
               </div>
             </div>
@@ -44,7 +58,12 @@ const CartItem = ({ pizza }) => {
         </div>
         <div className="flex flex-col justify-between">
           {/* remove pizza */}
-          <div className="text-2xl flex justify-center items-center self-end cursor-pointer hover:scale-110 transition-all duration-100 text-orange">
+          <div
+            onClick={() => {
+              removeItem(pizza.id, pizza.crust, pizza.price);
+            }}
+            className="text-2xl flex justify-center items-center self-end cursor-pointer hover:scale-110 transition-all duration-100 text-orange"
+          >
             <IoCloseOutline />
           </div>
           {/* price */}
@@ -57,9 +76,18 @@ const CartItem = ({ pizza }) => {
       </div>
       {/* toppings */}
       <div className="flex flex-wrap items-center gap-2 p-6 border-b border-black/10">
-        <div className="font-semibold">Toppings: {pizza.additionalTopping.length === 0 && "None"}</div>
+        <div className="font-semibold">
+          Toppings: {pizza.additionalTopping.length === 0 && "None"}
+        </div>
         {pizza.additionalTopping.map((topping, index) => {
-          return <div className="capitalize text-sm font-medium gradient px-3 py-1 rounded-full leading-none" key={index}>{topping.name}</div>;
+          return (
+            <div
+              className="capitalize text-sm font-medium gradient px-3 py-1 rounded-full leading-none"
+              key={index}
+            >
+              {topping.name}
+            </div>
+          );
         })}
       </div>
     </div>
