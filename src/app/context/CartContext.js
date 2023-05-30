@@ -122,6 +122,7 @@ const CartProvider = ({ children }) => {
         setIsOpen,
         addToCart,
         cart,
+        setCart,
         removeItem,
         increaseAmount,
         decreaseAmount,
