@@ -7,6 +7,7 @@ import CartMobileIcon from "./components/CartMobileIcon";
 import Navbar from "./components/Navbar";
 import CartProvider from "./context/CartContext";
 import "./globals.css";
+import Footer from "./components/Footer";
 
 const bangers = Bangers({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
           <CartMobile />
           {children}
           <CartDesktop />
+          <Footer />
         </body>
       </html>
     </CartProvider>
